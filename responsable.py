@@ -14,9 +14,8 @@ WHITE = '\033[37m'
 def validar_respon():
     
     if len(control_usuario.users_responsables)==0:
-        print("No hay responsables registrados")
-        print("El administrador debe registrar su cuenta");input("Presione enter -->")
-        administrador.validar_admin()
+        print("No hay responsables registrados, el administrador debe regisstrar su cuenta")
+        input("Presione enter -->")
     else:
         while True:
             system("cls")

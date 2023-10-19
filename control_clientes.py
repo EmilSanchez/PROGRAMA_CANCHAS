@@ -89,8 +89,9 @@ def actualizar_cliente():
                 opc=int(input("\nIngrese la opción del dato a actualizar --> "))
                 if opc>=1 and opc<=3:
                     nuevo_dato=input("Ingrese el nuevo dato del cliete --> ")
+                    mensaje_cliente[opc-1]=nuevo_dato
+                    excepciones_time.tiempo("Actualizando dato ...","Dato actualizado")
 
-                    mensaje_cliente[opc-1]=nuevo_dato;system("cls")
                 elif opc==4:
                     clientes.append(mensaje_cliente)
                     excepciones_time.tiempo("Actualizando cliente ...","Cliente actualizado")

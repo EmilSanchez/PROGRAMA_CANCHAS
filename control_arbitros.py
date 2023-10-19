@@ -22,12 +22,7 @@ def menu_arbitros():
             continue    
 
         if opcion==1:
-            existencia_arbitro,mensaje=consultar_arbitro()
-            if existencia_arbitro==True:
-                print(f"Se ha finalizado la consulta del arbitro {mensaje}")
-            else:
-                print(mensaje)
-            input("Presione enter --> ")
+            consultar_arbitro()
         elif opcion==2:
             registrar_arbitro()
         elif opcion==3:
@@ -39,7 +34,7 @@ def menu_arbitros():
 def consultar_arbitro():
     #validar existencia de árbitro
     if len(arbitros)==0:
-        return False,"NO HAY ÁRBITROS REGISTRADOS"
+        print("NO HAY ÁRBITROS REGISTRADOS")
     else:
         #Buscar al árbitro
         consulta = input("Ingrese el nombre y apellido del árbitro que desea buscar --> ")
@@ -47,12 +42,12 @@ def consultar_arbitro():
         contador=0
         for i in arbitros:
             if consulta == i :
-                print(f"Árbitro: {i} ")
-                input("Presione Enter.. --> ")
+                print(f"Árbitro: {consulta} ")
                 contador+=1
-                break
         else:
             print("No hay árbitros con este nombre")
+    input("Presione enter --> ")
+
             
 def registrar_arbitro():
     datos_cliente=[];system("cls")

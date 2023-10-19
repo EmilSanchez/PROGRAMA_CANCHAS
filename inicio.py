@@ -22,12 +22,9 @@ def programa():
             #Mensaje de ERROR
             excepciones_time.excepciones()
             continue    
-
         if opcion==1:
-            excepciones_time.tiempo("Ingresando ...","Ingreso exitoso")
             administrador.validar_admin()
         elif opcion==2:
-            excepciones_time.tiempo("Ingresando ...","Ingreso exitoso")
             responsable.validar_respon()
         elif opcion==3:
             break

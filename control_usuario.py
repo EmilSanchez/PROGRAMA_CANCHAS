@@ -33,7 +33,7 @@ def iniciocont_usuario():
         elif opcion==4:
             existencia, mensaje=buscar_respon()
             if existencia:
-                print(f"Se ha finalizado la consulta del responsable {mensaje}")
+                print(f"Se ha finalizado la consulta del responsable")
             else:
                 print(mensaje)
             input("Presione enter --> ")
@@ -72,12 +72,13 @@ def buscar_respon():
         contador=0
         cc=input("\nIngrese la identificacion  del responsable --> ")
         excepciones_time.tiempo("Buscando responsable ...","RESULTADOS:")
+        system("cls")
 
         for i in users_responsables:
             #Verificar cedula 
             if i[1] == cc :
                 print(f"\nResponsable: {i[0]}\tIdentificación: {cc}\tContraseña: {i[2]}")
-                return True
+                return True,i
         if contador == 0 :
             return False,"NO HAY RESPONSABLES REGISTRADOS CON ESTA IDENTIFICACIÓN"
         

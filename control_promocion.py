@@ -10,6 +10,7 @@ promociones=[]
 
 def menu_promociones():
     while True:
+        system("cls")
         print("=" * 56)
         print("|   CONTROL DE PROMOCIONES DE CANCHAS DEPORTIVAS SAS   |")
         print("=" * 56)

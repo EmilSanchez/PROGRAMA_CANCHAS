@@ -21,6 +21,8 @@ def validar_admin():
         print("\nBIENVENIDO  ADMINISTRADOR")
         usuario = input("\nIngrese el nombre de usuario --> ")
         contraseña = input("Ingrese la contraseña --> ")
+        
+        #Validar usuario y contraseña
         if usuario == user:
             if password == contraseña:
                 excepciones_time.tiempo("Ingresando al sistema ...","Ingreso exitoso")

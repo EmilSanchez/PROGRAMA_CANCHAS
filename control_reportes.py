@@ -72,6 +72,7 @@ def dinero_caja():
     if len(control_reservas.total_reservas)==0:
         excepciones_time.tiempo("Revisando caja ...","Resultados de la caja")
         print("NO HAY DINERO EN CAJA ")
+        input("Presione enter --> ")
     else:
         total=0
         for i in control_reservas.total_reservas:
