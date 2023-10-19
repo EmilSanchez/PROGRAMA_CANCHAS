@@ -2,6 +2,8 @@ from os import system;system("cls")
 import excepciones_time
 import control_usuario
 import control_clientes
+import control_reservas
+import control_arbitros
 import administrador
 #para que de color a las letras
 RED = '\033[31m'
@@ -17,6 +19,9 @@ def validar_respon():
         administrador.validar_admin()
     else:
         while True:
+            system("cls")
+            print("\nBIENVENIDO  ADMINISTRADOR"); print("")
+
             #Validar cuenta de responsable
             usuario = input("Ingrese su identificación --> ")
             contraseña = input("Ingrese la contraseña --> ")
@@ -63,10 +68,9 @@ def menu_responsable():
         if opcion == 1:
             control_clientes.menu_clientes()
         elif opcion == 2:
-            pass
+            control_reservas.disponibilidad_cliente()
         elif opcion == 3:
-            pass
-
+            control_arbitros.menu_arbitros()
         elif opcion == 4:
             break 
         else:

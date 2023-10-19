@@ -18,8 +18,8 @@ password= "2023"
 def validar_admin():
     while True:
         system("cls")
-        print("\nBIENVENIDO  ADMINISTRADOR"); print("")
-        usuario = input("Ingrese el nombre de usuario --> ")
+        print("\nBIENVENIDO  ADMINISTRADOR")
+        usuario = input("\nIngrese el nombre de usuario --> ")
         contraseña = input("Ingrese la contraseña --> ")
         if usuario == user:
             if password == contraseña:
