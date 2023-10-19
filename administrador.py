@@ -76,8 +76,8 @@ def menu_administrador():
         elif opcion == 6:
             control_reportes.inico_reporte()
         elif opcion == 7:
-            print("\nGracias por visitarnos!")
-            break 
+            system('cls')
+            break
         else:
             print("\nIngrese una opción valida")
     
