@@ -53,10 +53,10 @@ def  consultar_canchas():
 
                 excepciones_time.tiempo("Consultando las canchas ...","Resultados");system("cls")
                 if total_reservadas>=1:
-                    print(f"\nTotal canchas reservadas: {total_reservadas}")
+                    print(f"\nFecha= {fecha_cancha.date()}\t  Total canchas reservadas: {total_reservadas}")
                     for i in control_reservas.total_reservas:
                         if  fecha_cancha.date() == i[1].date():
-                            print(f"Fecha= {fecha_cancha.date()}\tCancha ={i[3]} \tValor_cancha = {i[5]}\tCliente ={i[0]}")
+                            print(f" Cliente ={i[0]} \t Cancha ={i[3]} \t Valor_cancha = {i[5]}")
                     input("Presione enter -->")
                     break
                 else:
@@ -70,16 +70,16 @@ def dinero_caja():
 
     #validar reservas
     if len(control_reservas.total_reservas)==0:
-        excepciones_time.tiempo("Revisando caja ...","Resultados de la caja")
         print("NO HAY DINERO EN CAJA ")
         input("Presione enter --> ")
+
     else:
         total=0
         for i in control_reservas.total_reservas:
-            #el dinero de la reserva es i[5]
 
+            #el dinero de la reserva es i[5]
             total+=i[5]
-        excepciones_time.tiempo("Ingresando la caja ...","Resultados de la caja");system("cls")
+        excepciones_time.tiempo("Revisando  caja ...","Resultados de la caja");system("cls")
         print(f"\nTOTAL DINERO DE CAJA:  {total}")
         input("Presione enter")
 

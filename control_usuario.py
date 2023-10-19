@@ -59,7 +59,6 @@ def agregarrespon():
     
     #Registrar responsable
     users_responsables.append(nuevo_repon)
-    #Tiempo
     excepciones_time.tiempo("Registrando responsable...","Responsable registrado")
 
 def buscar_respon():
@@ -68,11 +67,11 @@ def buscar_respon():
     if len(users_responsables)==0:
         return False,"No HAY RESPONSABLES REGISTRADO"
     else:
-        #pedirr dato
-        contador=0
-        cc=input("\nIngrese la identificacion  del responsable --> ")
+        #pedir dato
+        cc=input("\nIngrese la identificación  del responsable --> ")
         excepciones_time.tiempo("Buscando responsable ...","RESULTADOS:")
-        system("cls")
+        system("cls"); contador=0
+
 
         for i in users_responsables:
             #Verificar cedula 

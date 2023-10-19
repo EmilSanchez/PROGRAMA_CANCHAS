@@ -26,16 +26,17 @@ def validar_respon():
             contraseña = input("Ingrese la contraseña --> ")
             for i in control_usuario.users_responsables:
                 if usuario==i[1]:
-                        if contraseña == i[2]:
-                            menu_responsable()
-                            break
-                        else:
-                            print(RED,"")
-                            print("La contraseña es incorrecta...")
-                            print(WHITE,"")
-                            input("Presione Enter para intentarlo nuevamente.. --> ")
-                            system("cls")
-                            continue                
+                    if contraseña == i[2]:
+                        excepciones_time.tiempo("Ingresando al sistema ...","Ingreso exitoso")
+                        menu_responsable()
+                        break
+                    else:
+                        print(RED,"")
+                        print("La contraseña es incorrecta...")
+                        print(WHITE,"")
+                        input("Presione Enter para intentarlo nuevamente.. --> ")
+                        system("cls")
+                        continue                
                 else:
                     print(RED,"")
                     print("El nombre de usuario es incorrecto...")

@@ -39,6 +39,7 @@ def crear_promocion():
                 fecha=input("Ingrese la fecha del descuento (día-mes-año) --> ")
                 fechapromo=datetime.datetime.strptime(fecha,"%d-%m-%Y")
                 try:
+                    #solicitar el descuento
                     num_descuento=int(input("Ingrese el numero de descuento %  --> "))
                     promo.append(fechapromo.date())
                     promo.append(num_descuento)

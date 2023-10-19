@@ -24,12 +24,14 @@ def menu_clientes():
             continue    
 
         if opcion==1:
+            #buscar cliente
             existencia_clientes,mensaje_cliente=consultar_cliente()
             if existencia_clientes==True:
-                print(f"\nSe ha finalizado la consulta del cliente {mensaje_cliente[0]}")
+                print(f"\nSe ha finalizado la consulta del cliente")
             else:
                 print(mensaje_cliente)
             input("Presione enter --> ")
+
         elif opcion==2:
             nombre_cliente=registrar_cliente()
             print(f"Se ha finalizado el registro del cliente {nombre_cliente}")

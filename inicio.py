@@ -27,6 +27,7 @@ def programa():
         elif opcion==2:
             responsable.validar_respon()
         elif opcion==3:
+            
             break
         else:
             excepciones_time.errores()

@@ -9,8 +9,8 @@ import random
 RED = '\033[31m'
 WHITE = '\033[37m'
 
-#total reservas=[[cliente,fecha_inicio,fechafin,cancha,arbitro,costo]]
-total_reservas = []  # Listas para llevar un registro de las reservas de la mañana
+#total reservas=[[cliente , fecha_inicio, fechafin, cancha, arbitro, costo]]
+total_reservas = []  
 
 def disponibilidad_cliente():
     while True:
@@ -19,14 +19,19 @@ def disponibilidad_cliente():
         opc=input("\nDesea registrar una reserva? (si/no) --> ").upper()
 
         if opc=="SI":
-            #validar existencia del clientes
+
+            #Verificar registro del cliente
             existencia_cliente,nombre_cliente=control_clientes.consultar_cliente()
+
+            #SI cliente no está registrado
             if existencia_cliente==False:
                 print(RED,f"\nNO SE PUEDE RESERVAR UNA CANCHA SI {nombre_cliente}",WHITE)
                 input("\nPresione enter para registrar el cliente --> ")
 
                 #registrar cliente
                 nombre_cliente=control_clientes.registrar_cliente()
+
+            #Reservar fecha
             fechas_reserva(nombre_cliente)
 
         elif opc=="NO":
@@ -40,10 +45,13 @@ def fechas_reserva(nombre_cliente):
 
     while True:
         try:
+
             #Solicitar la fecha
             fecha_str= input("\nIngrese la fecha de reserva  (día-mes-año) --> ")
-            #%año-%mes-%dia
+
+            #%dia-%mes-%año
             fecha=datetime.datetime.strptime(fecha_str,"%d-%m-%Y")
+
             hora(fecha,nombre_cliente)
             break
         except:
@@ -54,6 +62,7 @@ def fechas_reserva(nombre_cliente):
 def hora(fecha,nombre_cliente):
     while True:
         datos_reserva=[]
+    
         #horarios
         print("\nHORARIO DE LA MAÑANA de 8:00 a 12:00 ")
         print("HORARIO DE LA TARDE de 15:00 a 19:00 ")
@@ -82,7 +91,7 @@ def hora(fecha,nombre_cliente):
                         #calcular costo
                         costo_reserva=calcular_costo(fecha_inicio,fecha_fin)
 
-                        #Opcion de arbitro
+                        #Opción de arbitro
                         while True:
                             opc=input("La reserva tendrá árbitro? (si/no) --> ").lower()
                             if opc=="si":
@@ -91,7 +100,7 @@ def hora(fecha,nombre_cliente):
                             elif opc=="no":
                                 arbitro_seleccionado="Ninguno";break
                             else:
-                                print(RED,"Ingrese si o no",WHITE)
+                                print(RED,"Ingrese si o no",WHITE,"\n")
                                 continue
 
                         #Realizar reserva
@@ -124,9 +133,11 @@ def hora(fecha,nombre_cliente):
 
 
 
-
 def dispon_canchas(fecha_inicio,fecha_fin):
+
     print("\n           CANCHAS         \n")
+
+    #mostrar canchas
     for i in range (1,6):
         print(f"Cancha {i}")
     while True:
@@ -134,13 +145,12 @@ def dispon_canchas(fecha_inicio,fecha_fin):
             cancha=int(input("\nIngrese la opción de cancha -->"))
             if cancha>=1 and cancha<=5:
 
-                # Verifica si la cancha está disponible en el momento especificado
+                # Verifica si la cancha está disponible 
                 if len(total_reservas)==0:
                     return True,cancha
                 else:
                     for i in total_reservas:
-
-                        #i[2]=fecha fin e i[3]=cancha reservada
+                        #i[2]=fecha fin , i[1]=fecha inicio  e i[3]=cancha reservadas
                         if (fecha_inicio<i[2] and fecha_fin>i[1])  and cancha==i[3] :
                             return False,cancha
                     return True,cancha
@@ -151,9 +161,10 @@ def dispon_canchas(fecha_inicio,fecha_fin):
 
 
 def calcular_costo(fecha_inicio, fecha_fin):
+
     costo_por_hora = 30000 #costo de la cancha por hora
 
-    tiempo_reservado = fecha_fin - fecha_inicio
+    tiempo_reservado = fecha_fin - fecha_inicio  
 
     # Calcula el costo en función de las horas
     costo_reserva = costo_por_hora * tiempo_reservado.total_seconds() /3600
@@ -163,9 +174,9 @@ def calcular_costo(fecha_inicio, fecha_fin):
         return costo_reserva
     else:
         for i in control_promocion.promociones:
-            #i[0]=fecha de descuento
+
+            #i[0]=fecha de descuento, i[1]=numero de descuento
             if fecha_inicio.date()==i[0]:
-                #i[1]=numero de descuento
                 descuento=i[1]/100
                 total=costo_reserva-(costo_reserva*descuento)
                 return total
@@ -175,10 +186,11 @@ def dispon_arbitro(fecha_inicio,fecha_fin):
     contador=1
     while contador<=len(control_arbitros.arbitros):
         disponible=True
+
         #selecciona el arbitro
         arbitro_seleccionado=random.choice(control_arbitros.arbitros)
 
-        #disponibilidad del arbitro selccionado
+        #Verificar la disponibilidad del árbitro
         for i in total_reservas:
             #i[2]=fecha de fin  reservada, i[1]=fecha incio reservada e i[4]=arbitro reservado   
             if (fecha_inicio<i[2] and fecha_fin>i[1])  and arbitro_seleccionado==i[4] :
@@ -188,7 +200,7 @@ def dispon_arbitro(fecha_inicio,fecha_fin):
         if disponible!=False:
             return arbitro_seleccionado
         contador+=1
-    print("No hay árbitros ")
+    print("No hay árbitros disponibles");input("Presione enter --> ")
     arbitro_seleccionado=control_arbitros.registrar_arbitro()
     return arbitro_seleccionado
 
