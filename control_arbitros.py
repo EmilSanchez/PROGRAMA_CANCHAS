@@ -12,8 +12,8 @@ def menu_arbitros():
         print("=" * 56)
         print("|    1.  --   CONSULTAR ARBITRO                        |")
         print("|    2.  --   REGISTRAR ARBITRO                        |")
-        print("|    4.  --   ELIMINAR ARBITRO                         |")
-        print("|    3.  --   SALIR                                    |")
+        print("|    3.  --   ELIMINAR ARBITRO                         |")
+        print("|    4.  --   SALIR                                    |")
         print("=" * 56);print("")
 
         try:
@@ -25,7 +25,7 @@ def menu_arbitros():
         if opcion==1:
             existencia_arbitro,mensaje=consultar_arbitro()
             if existencia_arbitro==True:
-                print(f"\nSe ha finalizado la consulta del árbitro")
+                print(f"\nÁrbitro: {mensaje}")
             else:
                 print(mensaje)
             input("Presione enter --> ")   
@@ -33,9 +33,6 @@ def menu_arbitros():
             registrar_arbitro()
         elif opcion==3:
             eliminar_arbitro()
-        elif opcion==2:
-            nombre_arbitro=registrar_arbitro()
-            print(f"Se ha finalizado el registro del árbitro {nombre_arbitro}")
         elif opcion==4:
             break
         else:
@@ -48,14 +45,12 @@ def consultar_arbitro():
         return False,"NO HAY ÁRBITROS REGISTRADOS"
     else:
         #Buscar al árbitro
-        consulta = input("Ingrese el nombre completo  del árbitro que desea buscar --> ").title()
+        consulta = input("Ingrese el nombre completo  del árbitro --> ").title()
         excepciones_time.tiempo("Consultando árbitro ...","RESULTADOS:");system("cls")
         contador=0
         for i in arbitros:
             #Verificar el nombre
             if consulta == i :
-                print(f"Árbitro: {consulta} ")
-                contador+=1
                 return True,i
         else:
             return False,"NO HAY ÁRBITROS REGISTRADOS CON ESE NOMBRE"
@@ -78,7 +73,7 @@ def eliminar_arbitro():
     existencia, mensaje_arbitros=consultar_arbitro()
     if existencia:
         arbitros.remove(mensaje_arbitros)#eliminar
-        excepciones_time.tiempo("Eliminando árbitro ...","árbitro eliminado ")
+        excepciones_time.tiempo("Eliminando árbitro ...","Árbitro eliminado ")
     else:
         print(f"{mensaje_arbitros}")
         input("Presione enter")

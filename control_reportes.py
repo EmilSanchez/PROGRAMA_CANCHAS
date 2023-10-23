@@ -37,34 +37,39 @@ def  consultar_canchas():
     
     #validar reservas
     if len(control_reservas.total_reservas)==0:
-        excepciones_time.tiempo("","")
-        print("NO HAY CANCHAS RESERVADAS ")
+        print("\nNO HAY CANCHAS RESERVADAS ")
+        input("Presione enter --> ")
+
     else:
         while True:
-            print("     CANCHAS RESERVADAS POR DÍA      ")
-
-            total_reservadas=0
+            total_reservadas_dia=0
             try:
-                fecha_cancha_str=input("\nIngrese la fecha de la cancha  (años-mes-dia)  --> ")
-                fecha_cancha=datetime.datetime.strptime(fecha_cancha_str,"%Y-%m-%d")
+                system("cls")
+                print("     CONSULTAR  CANCHAS RESERVADAS POR DÍA       ")
+                fecha_cancha_str=input("\nIngrese la fecha   (día-mes-año)  --> ")
+                fecha_cancha=datetime.datetime.strptime(fecha_cancha_str,"%d-%m-%Y")
+
+                #total  canchas por día
                 for i in control_reservas.total_reservas:
                     if  fecha_cancha.date() == i[1].date():
-                        total_reservadas+=1
+                        total_reservadas_dia+=1
 
-                excepciones_time.tiempo("Consultando las canchas ...","Resultados");system("cls")
-                if total_reservadas>=1:
-                    print(f"\nFecha= {fecha_cancha.date()}\t  Total canchas reservadas: {total_reservadas}")
+                if total_reservadas_dia>=1:
+                    excepciones_time.tiempo("Consultando las canchas ...","Resultados");system("cls")
+                    print("\n     CANCHAS RESERVADAS POR DÍA      ")
+                    print(f"\nFecha: {fecha_cancha.date()}\t  Total canchas reservadas: {total_reservadas_dia}\n")
                     for i in control_reservas.total_reservas:
                         if  fecha_cancha.date() == i[1].date():
-                            print(f" Cliente ={i[0]} \t Cancha ={i[3]} \t Valor_cancha = {i[5]}")
-                    input("Presione enter -->")
+                            print(f"Cliente: {i[0]} \t Cancha: {i[3]} \t Costo total: {i[5]}")
+                    input("\nPresione enter -->")
                     break
                 else:
                     print("\nNo hay canchas reservadas ese día")
+                    input("Presione enter --> ")
                     break
             except:
                 system("cls")
-                print(RED,"\nINGRESASTE MAL LA FECHA, INGRESALA ASÍ AÑO-MES-DÍA ",WHITE)
+                print(RED,"\nINGRESASTE MAL LA FECHA, INGRESALA ASÍ DÍA-MES-AÑO ",WHITE)
 
 def dinero_caja():
 
@@ -80,7 +85,7 @@ def dinero_caja():
             #el dinero de la reserva es i[5]
             total+=i[5]
         excepciones_time.tiempo("Revisando  caja ...","Resultados de la caja");system("cls")
-        print(f"\nTOTAL DINERO DE CAJA:  {total}")
+        print(f"\nTOTAL DINERO DE CAJA:  $ {total}")
         input("Presione enter")
 
 

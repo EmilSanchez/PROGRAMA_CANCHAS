@@ -63,6 +63,7 @@ def consultar_cliente():
         if contador == 0:
             return False,"NO HAY CLIENTES REGISTRADOS CON ESTA CÉDULA"
         
+
 def registrar_cliente():
     datos_cliente=[];system("cls")
     print("\n          REGISTRAR CLIENTE           ")
@@ -92,7 +93,7 @@ def actualizar_cliente():
                 if opc>=1 and opc<=3:
                     nuevo_dato=input("Ingrese el nuevo dato del cliete --> ")
                     mensaje_cliente[opc-1]=nuevo_dato
-                    excepciones_time.tiempo("Actualizando dato ...","Dato actualizado")
+                    excepciones_time.tiempo("Actualizando dato ...","Dato actualizado");system("cls")
 
                 elif opc==4:
                     clientes.append(mensaje_cliente)

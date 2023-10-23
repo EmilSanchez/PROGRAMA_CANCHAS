@@ -76,7 +76,7 @@ def buscar_respon():
         for i in users_responsables:
             #Verificar cedula 
             if i[1] == cc :
-                print(f"\nResponsable: {i[0]}\tIdentificación: {cc}\tContraseña: {i[2]}")
+                print(f"\nResponsable: {i[0]} \t\t\t Identificación: {cc} \t\t\tContraseña: {i[2]}")
                 return True,i
         if contador == 0 :
             return False,"NO HAY RESPONSABLES REGISTRADOS CON ESTA IDENTIFICACIÓN"
@@ -110,6 +110,8 @@ def actualizarrespon():
                     nuevo_dato=input("Ingrese el nuevo dato del responsable --> ")
                     #Cambiar el dato 
                     responsable_mensaje[opc-1]=nuevo_dato
+                    excepciones_time.tiempo("Actualizando dato ...","Dato actualizado");system("cls")
+
                 elif opc==4:
                     #Ingresa la actualizacion del responsable
                     users_responsables.append(responsable_mensaje)

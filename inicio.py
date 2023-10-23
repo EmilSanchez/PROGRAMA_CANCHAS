@@ -7,7 +7,7 @@ import excepciones_time
 def programa():
     #validar usuario
     while(True):
-
+        system("cls")
         print("=" * 44)
         print("|          CANCHAS DEPORTIVAS SAS          |")
         print("=" * 44)
@@ -19,7 +19,6 @@ def programa():
         try:
             opcion = int(input("Ingrese la opcion a ejecutar --> "))         
         except:
-            #Mensaje de ERROR
             excepciones_time.excepciones()
             continue    
         if opcion==1:
@@ -27,7 +26,6 @@ def programa():
         elif opcion==2:
             responsable.validar_respon()
         elif opcion==3:
-            
             break
         else:
             excepciones_time.errores()

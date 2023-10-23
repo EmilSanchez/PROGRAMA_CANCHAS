@@ -78,6 +78,4 @@ def menu_administrador():
         elif opcion == 7:
             break 
         else:
-            print("\nIngrese una opción valida")
-    
-
+            excepciones_time.errores()
