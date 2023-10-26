@@ -18,6 +18,7 @@ def validar_respon():
         while True:
             system("cls");salir=False
             print("\n       BIENVENIDO  RESPONSABLE")
+            
             #Validar cuenta de responsable
             usuario = input("\nIngrese su identificación --> ")
             contraseña = input("Ingrese la contraseña --> ")
