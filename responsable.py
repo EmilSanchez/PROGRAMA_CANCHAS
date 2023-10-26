@@ -7,7 +7,7 @@ import control_reservas
 RED = '\033[31m'
 WHITE = '\033[37m'
 
-#user_responsables[["Luisa Araque","1065871433","luisa22"]]
+#identificación:"1065871433",contraseña:"luisa22"
 
 def validar_respon():
     

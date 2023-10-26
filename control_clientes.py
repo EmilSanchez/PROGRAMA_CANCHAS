@@ -1,6 +1,7 @@
 from os import system;system("cls")
 import excepciones_time
 
+#clienter=[nombre,cedula,teléfono]
 clientes=[]
 
 def menu_clientes():
