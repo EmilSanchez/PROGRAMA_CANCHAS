@@ -34,7 +34,7 @@ def disponibilidad_cliente():
                 nombre_cliente=control_clientes.registrar_cliente()
 
             #Reservar fecha
-            fechas_reserva(nombre_cliente[0])
+            fechas_reserva(nombre_cliente)
         else: 
             continue
 
